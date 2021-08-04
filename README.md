@@ -69,34 +69,45 @@ Create a class: Dinosaur
 
 [Name] - Dino name
 [DietType] - This will be "carnivore" or "herbivore"
-[WhenAcquired] - This will default to the current time when the dinosaur is created
+[WhenAcquired] - {Date.Time entry}
 [Weight] - How heavy the dinosaur is in pounds. (int.parse)
 [EnclosureNumber] - the number of the pen the dinosaur is in
 
-Set up a welcome screen menu with the following options:
+//Set up a welcome screen menu with the following options:
 
----
+Console.WriteLine(" --- /n");
+Console.WriteLine(" Welcome to Jurassic Zoo ");
+Console.WriteLine(" \***\*\*\*\*\*\*\*** ");
+Console.WriteLine(" Dinosaur Collection Application /n");
+Console.WriteLine(" --- /n/n/n");
+Console.WriteLine("What action would you like to complete?/n")
 
-Welcome to Jurassic Zoo  
- ****\*\*\*\*****
-Dinosaur Collection Application
+Console.WriteLine("1. (A)dd");
+Console.WriteLine("2. (R)emove");
+Console.WriteLine("3. (S)ummary");
+Console.WriteLine("4. (T)ransfer");
+Console.WriteLine("5. (V)iew");
+Console.WriteLine("6. (Q)uit/n");
 
----
+Console.WriteLine ("Please enter your selection and press ENTER./n");
 
-What action would you like to complete?
+//Prompt user to enter their selection. Convert to Upper
 
-1. (A)dd
-2. (R)emove
-3. (S)ummary
-4. (T)ransfer
-5. (V)iew
-6. (Q)uit
+var choice = Console.ReadLine().ToUpper();
 
 If user selects (A)dd
 
-- Prompt user with Dinosaur variables (accept a blank entry and enter null)
+- Prompt user with Dinosaur class variables to complete
+  - [Name] - Dino name
+  - [DietType] - This will be "carnivore" or "herbivore"
+  - [WhenAcquired] - {Date.Time entry}
+  - [Weight] - How heavy the dinosaur is in pounds. (int.parse)
+  - [EnclosureNumber] - the number of the pen the dinosaur is in
+    -Accept a blank entry on all fields but Name and enter (null)
 
 If user selects (R)emove
 
-- Prompt use with Console.Read line to collect dinosaur name
-  -If match
+- Prompt use with Console.Read line to collect dinosaur name. Include LINQ contains
+  -If match, Console.WriteLine matching dinosaur name
+  - Display message for user to confirm desire to remove dinosaur with (Y)es/(N)o menu option. Convert to Upper
+    -If no match, Console.WriteLine message "No such dinosaur exists in our collection."
