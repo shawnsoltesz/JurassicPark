@@ -106,13 +106,6 @@ If user selects (C)ollection
 
 If user selects (R)emove
 
-- Prompt use with Console.Read line to collect dinosaur name to be removed.
-  -Include LINQ "Contains" expression to help return results.
-  -If no match, Console.WriteLine message "No such dinosaur exists in our collection." - If match, Console.WriteLine matching dinosaur name - If match, display message for user to confirm desire to remove dinosaur with (Y)es/(N)o menu option. Convert to Upper
-  -Console.Read user input string to collect Y or N
-  -If (Y)es, remove dinosaur from list and return to menu
-  -If (N)o, cancel action and return to menu
-
 If the user selects (S)ummary
 
 - Generate a report counting the number of dinosaurs - grouping counts of omnivores and carnivores
