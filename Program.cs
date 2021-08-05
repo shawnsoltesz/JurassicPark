@@ -20,23 +20,25 @@ namespace JurassicPark
         static void Main(string[] args)
         {
 
-
-
             Console.WriteLine("\n\n");
+
+
+
             Console.WriteLine("         Welcome to Jurassic Zoo        ");
             Console.WriteLine("             ****************           ");
             Console.WriteLine("      Dinosaur Collection Application   \n");
-
 
             Console.WriteLine("-*-*-*-*-*-*-*-*-*-MENU-*-*-*-*-*-*-*-*-*-\n");
             Console.WriteLine("What action would you like to complete?\n");
 
             Console.WriteLine("COLLECTION MANAGEMENT\n");
+
             Console.WriteLine("(A)dd a new dinosaur to the collection");
             Console.WriteLine("(R)emove a dinosaur from the collection");
             Console.WriteLine("(T)ransfer a dinosaur's enclosure pen\n");
 
             Console.WriteLine("REPORTS\n");
+
             Console.WriteLine("(C)ollection details of all dinosaurs");
             Console.WriteLine("(S)ummary of diet types");
             Console.WriteLine("(V)iew dinosaurs and date acquired\n");
@@ -81,9 +83,15 @@ namespace JurassicPark
                 dinosaur.DietType = PromptForString("Diet Type - (O)mnivore/(C)arnivore: ");
                 dinosaur.EnclosureNumber = PromptForInteger("Enclosure Number: ");
                 dinosaur.WhenAcquired = PromptForInteger("Date Acquired (FORMAT: MMDDYYYY): ");
+                //**convert integer to date**
                 dinosaur.Weight = PromptForInteger("Weight: ");
 
-                //Dinosaur.Add(dinosaur);
+                //Dinosaur.Add(dinosaur); (**doesn't like add**)
+
+                Console.WriteLine("Would you like to add another dinosaur to the collection?");
+
+                //- If(Y)es, loop through fields to add
+                //- If(N)o, return to menu 
             }
 
             else
@@ -94,10 +102,7 @@ namespace JurassicPark
 
             }
 
-            //-Once entered, prompt to add another(Y)es and(N)o.
 
-            //- If(Y)es, loop through fields to add
-            //- If(N)o, return to menu */
 
 
 
