@@ -11,22 +11,32 @@ E -
    [Weight] - How heavy the dinosaur is in pounds.
    [EnclosureNumber] - the number of the pen the dinosaur is in
 
-2. WhenAcquired needs to be a non-editable {Date.Time} variable when the entry is made
+2. [WhenAcquired] needs to be a non-editable {Date.Time} variable when the entry is made into the application. This will be used for generating the View report that lists the date the dinosaurs were added to the collection. This report is sorted using LINQ SortBy and Then By expressions by date.time stamp.
 
-3. Need to allow for entries to be made with blank fields (null) without issue
+3. When adding dinosaurs or editing the enclosure pen, a warning message is displayed that if any field is left blank, the action is cancelled and return to menu. The attempt is not saved by updating the data and the menu is displayed.
 
-4. [MethodDescription]
-   (Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.) **TBD**
+4. Collections Report - [MethodDescription] (Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.) **TBD**
+
+layout
+
+Console.WriteLine($"Dinosaur Name: {dinoName}\nDiet Type: {dietType}\nWeight: {weight}\nEnclosure Number: {enclosureNumber}\nWhen Acquired: {Date.Time}\n")
+
+5. [Transfer] - Assign the enclosure number during initial adding of the dinosaur. If the dinosaur is transferred, the enclosure number should and can be updated in the application.
+
+6.
 
 D -
 
 [Class] - Create a class to represent your dinosaurs. The class should have the following properties:
 
-[Name] - Dino name
-[DietType] - This will be "carnivore" or "herbivore"
-[WhenAcquired] - This will default to the current time when the dinosaur is acquired using created {Date.Time}
-[Weight] - How heavy the dinosaur is in pounds. (int parsed)
-[EnclosureNumber] - the number of the pen the dinosaur is in
+[dinoName] - Dino name
+[dietType] - This will be "carnivore" or "herbivore"
+[whenAcquired] - This will default to the current time when the dinosaur is acquired using created {Date.Time}
+[weight] - How heavy the dinosaur is in pounds. (int parsed)
+
+- [Weight] entry could contain a decimal, so be sure variable type is double. Convert entry to two decimal places - 178.43, 203.00, 457.02, etc
+
+[enclosureNumber] - the number of the pen the dinosaur is in
 
 [MethodDescription] aka [Collection]
 Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative. **TBD**To be built under the class, but need an output option. Name "Collection"
@@ -43,8 +53,8 @@ Data Storage - Data will be stored a List<Dinosaur>.
 
 A -
 
-Create display for Jurassic Dinosaur Zoo
-Create a menu with the following actions:
+Create a welcome screen for application
+Create a menu for application with the following functionality options:
 
 1. [(A)dd a dinosaur to the collection]
 
@@ -60,33 +70,36 @@ Create a menu with the following actions:
 
 7. [(Q)uit] application and close
 
-A -
-
-Create a class: Dinosaur
-
-[Name] - Dino name
-[DietType] - This will be "carnivore" or "herbivore"
-[WhenAcquired] - {Date.Time entry}
-[Weight] - How heavy the dinosaur is in pounds. (int.parse)
-[EnclosureNumber] - the number of the pen the dinosaur is in
+Weight entry could contain a decimal, so be sure variable type is double. Convert entry to two decimal places - 178.43, 203.00, 457.02, etc
 
 Add a method Description to your class to print out a description of the dinosaur to include all the properties. **TBD format**Create an output format of your choosing.
 
-**???**(Keep track of dinosaurs in list called Dinosaurs)
+**???**(Keep track of dinosaurs in **LIST** called DinosaursProperties) - assignment requirement that must feed into the class Dinosaur
 
-Create a welcome screen for application
-Create a menu for application functionality options
 Prompt user to enter their selection. Convert to Upper
 
 If user selects (A)dd
 
-- Prompt user with Dinosaur class variables to complete. Indicate to users that all fields must be entered or addition will be cancelled.
-  - [Name] - Dino name
-  - [DietType] - This will be "carnivore" or "herbivore"
-  - [WhenAcquired] - {Date.Time entry}
-  - [Weight] - How heavy the dinosaur is in pounds. (int.parse)
-  - [EnclosureNumber] - the number of the pen the dinosaur is in
-- One entered, return to menu
+Create a class: Dinosaur
+
+[dinoName] - Dino name
+[dietType] - This will be "carnivore" or "herbivore"
+[whenAcquired] - {Date.Time entry} - (user cannot edit this. This is autocompleted)
+[weight] - How heavy the dinosaur is in pounds. (int.parse)
+[enclosureNumber] - the number of the pen the dinosaur is in
+
+- Console.WriteLine warning to users that all fields must be entered or addition will be cancelled.
+
+Console.WriteLine / Console.Read prompts with user inputs for the following fields:
+
+- [dinoName] - Dinosaur's name
+- [dietType] - Please indicate "carnivore" or "herbivore"
+- [whenAcquired] - {Date.Time entry} - (user cannot edit this. This is autocompleted)
+- [weight] - How heavy the dinosaur is in pounds. (int.parse)
+- [enclosureNumber] - the number of the pen the dinosaur is in
+- Once entered, prompt to add another (Y)es and (N)o.
+  - If (Y)es, loop through fields to add
+  - If (N)o, return to menu
 
 If user selects (C)ollection
 
@@ -98,8 +111,8 @@ If user selects (R)emove
   -Include LINQ "Contains" expression to help return results.
   -If no match, Console.WriteLine message "No such dinosaur exists in our collection." - If match, Console.WriteLine matching dinosaur name - If match, display message for user to confirm desire to remove dinosaur with (Y)es/(N)o menu option. Convert to Upper
   -Console.Read user input string to collect Y or N
-  -If Y, remove dinosaur from list and return to menu
-  -If No, cancel action and return to menu
+  -If (Y)es, remove dinosaur from list and return to menu
+  -If (N)o, cancel action and return to menu
 
 If the user selects (S)ummary
 
