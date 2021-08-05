@@ -1,22 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace JurassicPark
 {
+
+    class Dinosaur
+    {
+        public string DinoName { get; set; }
+        public string DietType { get; set; }
+        public int EnclosureNumber { get; set; }
+        public int WhenAcquired { get; set; }
+        public int Weight { get; set; }
+
+    }
+
     class Program
     {
+
         static void Main(string[] args)
         {
-            //Create a class: Dinosaur
 
-            //[Name] - Dino name
-            //[DietType] - This will be "carnivore" or "herbivore"
-            //[WhenAcquired] - {Date.Time entry}
-            //[Weight] - How heavy the dinosaur is in pounds. (int.parse)
-            //[EnclosureNumber] - the number of the pen the dinosaur is in
 
-            //Set up a welcome screen menu with the following options:
 
-            Console.WriteLine("");
+            Console.WriteLine("\n\n");
             Console.WriteLine("         Welcome to Jurassic Zoo        ");
             Console.WriteLine("             ****************           ");
             Console.WriteLine("      Dinosaur Collection Application   \n");
@@ -25,19 +31,78 @@ namespace JurassicPark
             Console.WriteLine("-*-*-*-*-*-*-*-*-*-MENU-*-*-*-*-*-*-*-*-*-\n");
             Console.WriteLine("What action would you like to complete?\n");
 
-            Console.WriteLine("1. (A)dd a new dinosaur to the collection");
-            Console.WriteLine("2. (C)ollection review of all dinosaurs");
-            Console.WriteLine("3. (R)emove a dinosaur from the collection");
-            Console.WriteLine("4. (S)ummary of collections' Omnivores and Carnivores");
-            Console.WriteLine("5. (T)ransfer a dinosaur's enclosure pen");
-            Console.WriteLine("6. (V)iew dinosaurs in collection and date acquired");
-            Console.WriteLine("7. (Q)uit and close application\n");
+            Console.WriteLine("COLLECTION MANAGEMENT\n");
+            Console.WriteLine("(A)dd a new dinosaur to the collection");
+            Console.WriteLine("(R)emove a dinosaur from the collection");
+            Console.WriteLine("(T)ransfer a dinosaur's enclosure pen\n");
+
+            Console.WriteLine("REPORTS\n");
+            Console.WriteLine("(C)ollection details of all dinosaurs");
+            Console.WriteLine("(S)ummary of diet types");
+            Console.WriteLine("(V)iew dinosaurs and date acquired\n");
+            Console.WriteLine("(Q)uit application\n");
 
             Console.WriteLine("Please input the letter from the menu and press ENTER.\n");
 
-            //Prompt user to enter their selection. Convert to Upper
-
             var userChoice = Console.ReadLine().ToUpper();
+
+            static string PromptForString(string prompt)
+            {
+                Console.Write(prompt);
+                var userInput = Console.ReadLine();
+
+                return userInput;
+            }
+
+            static int PromptForInteger(string prompt)
+            {
+                Console.Write(prompt);
+                int userInput;
+                var isThisGoodInput = Int32.TryParse(Console.ReadLine(), out userInput);
+
+                if (isThisGoodInput)
+                {
+                    return userInput;
+                }
+                else
+                {
+                    Console.WriteLine("This is not a valid entry. Action cancelled.");
+                    return 0;
+                }
+            }
+
+            if (userChoice == "A")
+
+            {
+
+                var dinosaur = new Dinosaur();
+
+                dinosaur.DinoName = PromptForString("Dinosaur Name: ");
+                dinosaur.DietType = PromptForString("Diet Type - (O)mnivore/(C)arnivore: ");
+                dinosaur.EnclosureNumber = PromptForInteger("Enclosure Number: ");
+                dinosaur.WhenAcquired = PromptForInteger("Date Acquired (FORMAT: MMDDYYYY): ");
+                dinosaur.Weight = PromptForInteger("Weight: ");
+
+                //Dinosaur.Add(dinosaur);
+            }
+
+            else
+
+            {
+
+                Console.WriteLine("Action Canceled!");
+
+            }
+
+            //-Once entered, prompt to add another(Y)es and(N)o.
+
+            //- If(Y)es, loop through fields to add
+            //- If(N)o, return to menu */
+
+
+
         }
+
+
     }
 }
