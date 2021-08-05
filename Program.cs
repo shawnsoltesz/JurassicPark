@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace JurassicPark
 {
@@ -79,75 +80,73 @@ namespace JurassicPark
 
             DisplayGreeting();
 
-            var userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
-
             var keepGoing = true;
 
             while (keepGoing)
             {
 
+                var userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
 
-                if (userChoice == "A")
-
-                    keepGoing = false;
+                if (userChoice == "Q")
                 {
+                    // They said quit, so set our keepGoing to false
+                    keepGoing = false;
+                }
 
-
-
+                else
+                if (userChoice == "A")
+                {
 
                     var dinosaur = new Dinosaur();
 
-                    dinosaur.DinoName = PromptForString("Dinosaur Name: ");
-                    dinosaur.DietType = PromptForString("Diet Type - (O)mnivore/(C)arnivore: ");
-                    dinosaur.EnclosureNumber = PromptForInteger("Enclosure Number: ");
-                    dinosaur.WhenAcquired = PromptForInteger("Date Acquired (FORMAT: MMDDYYYY): ");
+                    dinosaur.DinoName = PromptForString("ADD: Dinosaur Name: ");
+                    dinosaur.DietType = PromptForString("ADD: Diet Type - (O)mnivore/(C)arnivore: ");
+                    dinosaur.EnclosureNumber = PromptForInteger("ADD: Enclosure Number: ");
+                    dinosaur.WhenAcquired = PromptForInteger("Date Acquired (ADD: FORMAT: MMDDYYYY): ");
                     //int DateTime = dinosaur.WhenAcquired;
                     //DateTime dt = DateTime.Parse(Convert.ToString("MMDDYYYY"));
 
-                    dinosaur.Weight = PromptForInteger("Weight: ");
+                    dinosaur.Weight = PromptForInteger("ADD: Weight: ");
 
-                    dinosaurs.Add(dinosaur); //(**doesn't like add**)
-
-                    keepGoing = true;
-
-                    //Console.WriteLine("Would you like to add another dinosaur to the collection? (Y)es or (N)o");
-                    //var addAnother = Console.ReadLine().ToUpper();
-
-                    //if (addAnother == "N")
-
-                    //DisplayGreeting();
-
-                    //var userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
-
-                    //if (addAnother == "Y")
-
-
-                    //keepGoing = false;
-
+                    dinosaurs.Add(dinosaur);
                 }
 
+                keepGoing = true;
 
+                if (userChoice == "C")
 
+                {
+                    //**TBD**Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.
+                }
 
+                if (userChoice == "R")
 
+                {
+                    var nameToSearchFor = PromptForString("REMOVE: Dinosaur Name ");
 
+                    Dinosaur foundDinosaur = dinosaurs.FirstOrDefault(dinosaur => dinosaur.DinoName == nameToSearchFor);
 
+                    if (foundDinosaur == null)
+                    {
+                        Console.WriteLine("No such dinosaur in our collection");
+                    }
 
+                    else
+                    {
+                        Console.WriteLine($"REMOVE: {foundDinosaur.DinoName} ");
 
+                        var confirm = PromptForString("Are you sure? [Y/N] ").ToUpper();
 
-                //(Y)es, loop through fields to add
-                //- If(N)o, return to menu 
+                        if (confirm == "Y")
+                        {
+                            dinosaurs.Remove(foundDinosaur);
+                        }
+                    }
+                }
+                DisplayGreeting();
 
-
+                userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
             }
-
-
-
-
-
-
         }
-
-
     }
 }
