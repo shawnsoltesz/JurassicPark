@@ -24,18 +24,18 @@ D -
 
 [Name] - Dino name
 [DietType] - This will be "carnivore" or "herbivore"
-[WhenAcquired] - This will default to the current time when the dinosaur is created {Date.Time} but non-editable (startdate = Convert.ToDateTime("12/25/2008");)
+[WhenAcquired] - This will default to the current time when the dinosaur is acquired using created {Date.Time}
 [Weight] - How heavy the dinosaur is in pounds. (int parsed)
 [EnclosureNumber] - the number of the pen the dinosaur is in
 
-[MethodDescription]
-Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.
-
-    To be built under the class, but need an output option. Name "Collection"
+[MethodDescription] aka [Collection]
+Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative. **TBD**To be built under the class, but need an output option. Name "Collection"
 
 [Remove] - allow user to search for dinosaur by name, confirm deletion, and remove upon confirmation.
 
-[View] - A list of entries sorted by {Date.Time} stamp using LINQ Sort By/Then By
+[View] - - **use LINQ OrderBy and ThenBy**
+This command will show the all the dinosaurs in the list, ordered by WhenAcquired.
+Use {Date.Time} stamp If there aren't any dinosaurs in the park then print out a message that there aren't any.
 
 [Transfer] - Only prompt user with a new Enclosure Number to be edited. Other fields are non-editable and should not be included.
 
@@ -43,25 +43,22 @@ Data Storage - Data will be stored a List<Dinosaur>.
 
 A -
 
-When the console application runs, it should let the user choose one of the following actions:
+Create display for Jurassic Dinosaur Zoo
+Create a menu with the following actions:
 
-[(A)dd]
-This command will let the user type in the information for a dinosaur and add it to the list. Prompt for the Name, Diet Type, Weight and Enclosure Number, but the WhenAcquired must be supplied by the code.
+1. [(A)dd a dinosaur to the collection]
 
-[(R)emove]
-This command will prompt the user for a dinosaur name then find and delete the dinosaur with that name.
+2. [(C)ollection review of all dinosaurs]
 
-[(S)ummary]
-This command will display the number of carnivores and the number of herbivores.
+3. [(R)emove a dinosaur from the collection]
 
-[(T)ransfer]
-This command will prompt the user for a dinosaur name and a new EnclosureNumber and update that dino's information.
+4. [(S)ummary of collections' Omnivores and Carnivores]
 
-[(V)iew] - **use LINQ OrderBy and ThenBy**
-This command will show the all the dinosaurs in the list, ordered by WhenAcquired. If there aren't any dinosaurs in the park then print out a message that there aren't any.
+5. [(T)ransfer a dinosaur's enclosure pen]
 
-[Quit]
-This will stop the program
+6. [(V)iew dinosaurs in collection and date acquired]
+
+7. [(Q)uit] application and close
 
 A -
 
@@ -73,41 +70,61 @@ Create a class: Dinosaur
 [Weight] - How heavy the dinosaur is in pounds. (int.parse)
 [EnclosureNumber] - the number of the pen the dinosaur is in
 
-//Set up a welcome screen menu with the following options:
+Add a method Description to your class to print out a description of the dinosaur to include all the properties. **TBD format**Create an output format of your choosing.
 
-Console.WriteLine(" --- /n");
-Console.WriteLine(" Welcome to Jurassic Zoo ");
-Console.WriteLine(" \***\*\*\*\*\*\*\*** ");
-Console.WriteLine(" Dinosaur Collection Application /n");
-Console.WriteLine(" --- /n/n/n");
-Console.WriteLine("What action would you like to complete?/n")
+**???**(Keep track of dinosaurs in list called Dinosaurs)
 
-Console.WriteLine("1. (A)dd");
-Console.WriteLine("2. (R)emove");
-Console.WriteLine("3. (S)ummary");
-Console.WriteLine("4. (T)ransfer");
-Console.WriteLine("5. (V)iew");
-Console.WriteLine("6. (Q)uit/n");
-
-Console.WriteLine ("Please enter your selection and press ENTER./n");
-
-//Prompt user to enter their selection. Convert to Upper
-
-var choice = Console.ReadLine().ToUpper();
+Create a welcome screen for application
+Create a menu for application functionality options
+Prompt user to enter their selection. Convert to Upper
 
 If user selects (A)dd
 
-- Prompt user with Dinosaur class variables to complete
+- Prompt user with Dinosaur class variables to complete. Indicate to users that all fields must be entered or addition will be cancelled.
   - [Name] - Dino name
   - [DietType] - This will be "carnivore" or "herbivore"
   - [WhenAcquired] - {Date.Time entry}
   - [Weight] - How heavy the dinosaur is in pounds. (int.parse)
   - [EnclosureNumber] - the number of the pen the dinosaur is in
-    -Accept a blank entry on all fields but Name and enter (null)
+- One entered, return to menu
+
+If user selects (C)ollection
+
+- **TBD**Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.
 
 If user selects (R)emove
 
-- Prompt use with Console.Read line to collect dinosaur name. Include LINQ contains
-  -If match, Console.WriteLine matching dinosaur name
-  - Display message for user to confirm desire to remove dinosaur with (Y)es/(N)o menu option. Convert to Upper
-    -If no match, Console.WriteLine message "No such dinosaur exists in our collection."
+- Prompt use with Console.Read line to collect dinosaur name to be removed.
+  -Include LINQ "Contains" expression to help return results.
+  -If no match, Console.WriteLine message "No such dinosaur exists in our collection." - If match, Console.WriteLine matching dinosaur name - If match, display message for user to confirm desire to remove dinosaur with (Y)es/(N)o menu option. Convert to Upper
+  -Console.Read user input string to collect Y or N
+  -If Y, remove dinosaur from list and return to menu
+  -If No, cancel action and return to menu
+
+If the user selects (S)ummary
+
+- Generate a report counting the number of dinosaurs - grouping counts of omnivores and carnivores
+  -Use LINQ expression count
+  - Return counts in Console.WriteLine
+    -If there are no dinosaurs in the collection, Console.WriteLine "There are no dinosaurs in our collection."
+- Return to menu
+
+If the user selects (T)ransfer
+
+- Prompt use with Console.Read line to collect dinosaur name to be removed.
+  -Include LINQ "Contains" expression to help return results.
+  - -If no match, Console.WriteLine message "No such dinosaur exists in our collection." and return to menu
+  - If match, Console.WriteLine "Please enter {dinosaur} new enclosure pen"
+    - Console.Read to collect user input
+
+If the user selects (V)iew
+
+- Generate a report of all dinosaurs in the collection
+  -Use LINQ OrderBy and ThenBy function to arrange dinosaurs based on {Date.Time} stamp when dinosaur was created
+  -If there are no dinosaurs in the collection, Console.WriteLine "There are no dinosaurs in our collection."
+- Return to menu
+
+If the user selects (Q)uit
+
+- Console.WriteLine "Have a roarin' great day at Jurrasic Zoo!"
+- Terminate and close application
