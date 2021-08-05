@@ -97,9 +97,8 @@ Console.WriteLine / Console.Read prompts with user inputs for the following fiel
 - [whenAcquired] - {Date.Time entry} - (user cannot edit this. This is autocompleted)
 - [weight] - How heavy the dinosaur is in pounds. (int.parse)
 - [enclosureNumber] - the number of the pen the dinosaur is in
-- Once entered, prompt to add another (Y)es and (N)o.
-  - If (Y)es, loop through fields to add
-  - If (N)o, return to menu
+
+Add entry to Dinosaurs
 
 If user selects (C)ollection
 

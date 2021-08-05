@@ -67,7 +67,7 @@ namespace JurassicPark
             }
             else
             {
-                Console.WriteLine("This is not a valid entry. Action cancelled.");
+                //Console.WriteLine("This is not a valid entry. Action cancelled.");
                 return 0;
             }
         }
@@ -81,36 +81,66 @@ namespace JurassicPark
 
             var userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
 
-            if (userChoice == "A")
+            var keepGoing = true;
 
+            while (keepGoing)
             {
 
-                var dinosaur = new Dinosaur();
 
-                dinosaur.DinoName = PromptForString("Dinosaur Name: ");
-                dinosaur.DietType = PromptForString("Diet Type - (O)mnivore/(C)arnivore: ");
-                dinosaur.EnclosureNumber = PromptForInteger("Enclosure Number: ");
-                dinosaur.WhenAcquired = PromptForInteger("Date Acquired (FORMAT: MMDDYYYY): ");
-                //int DateTime = dinosaur.WhenAcquired;
-                //DateTime dt = DateTime.Parse(Convert.ToString("MMDDYYYY"));
+                if (userChoice == "A")
 
-                dinosaur.Weight = PromptForInteger("Weight: ");
+                    keepGoing = false;
+                {
 
-                dinosaurs.Add(dinosaur); //(**doesn't like add**)
 
-                Console.WriteLine("Would you like to add another dinosaur to the collection?");
 
-                //- If(Y)es, loop through fields to add
+
+                    var dinosaur = new Dinosaur();
+
+                    dinosaur.DinoName = PromptForString("Dinosaur Name: ");
+                    dinosaur.DietType = PromptForString("Diet Type - (O)mnivore/(C)arnivore: ");
+                    dinosaur.EnclosureNumber = PromptForInteger("Enclosure Number: ");
+                    dinosaur.WhenAcquired = PromptForInteger("Date Acquired (FORMAT: MMDDYYYY): ");
+                    //int DateTime = dinosaur.WhenAcquired;
+                    //DateTime dt = DateTime.Parse(Convert.ToString("MMDDYYYY"));
+
+                    dinosaur.Weight = PromptForInteger("Weight: ");
+
+                    dinosaurs.Add(dinosaur); //(**doesn't like add**)
+
+                    keepGoing = true;
+
+                    //Console.WriteLine("Would you like to add another dinosaur to the collection? (Y)es or (N)o");
+                    //var addAnother = Console.ReadLine().ToUpper();
+
+                    //if (addAnother == "N")
+
+                    //DisplayGreeting();
+
+                    //var userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
+
+                    //if (addAnother == "Y")
+
+
+                    //keepGoing = false;
+
+                }
+
+
+
+
+
+
+
+
+
+
+                //(Y)es, loop through fields to add
                 //- If(N)o, return to menu 
-            }
 
-            else
-
-            {
-
-                Console.WriteLine("Action Canceled!");
 
             }
+
 
 
 
