@@ -17,12 +17,9 @@ namespace JurassicPark
     class Program
     {
 
-        static void Main(string[] args)
+        public static void DisplayGreeting()
         {
-
             Console.WriteLine("\n\n");
-
-
 
             Console.WriteLine("         Welcome to Jurassic Zoo        ");
             Console.WriteLine("             ****************           ");
@@ -46,32 +43,43 @@ namespace JurassicPark
 
             Console.WriteLine("Please input the letter from the menu and press ENTER.\n");
 
-            var userChoice = Console.ReadLine().ToUpper();
 
-            static string PromptForString(string prompt)
+
+        }
+
+        static string PromptForString(string prompt)
+        {
+            Console.Write(prompt);
+            var userInput = Console.ReadLine();
+
+            return userInput;
+        }
+
+        static int PromptForInteger(string prompt)
+        {
+            Console.Write(prompt);
+            int userInput;
+            var isThisGoodInput = Int32.TryParse(Console.ReadLine(), out userInput);
+
+            if (isThisGoodInput)
             {
-                Console.Write(prompt);
-                var userInput = Console.ReadLine();
-
                 return userInput;
             }
-
-            static int PromptForInteger(string prompt)
+            else
             {
-                Console.Write(prompt);
-                int userInput;
-                var isThisGoodInput = Int32.TryParse(Console.ReadLine(), out userInput);
-
-                if (isThisGoodInput)
-                {
-                    return userInput;
-                }
-                else
-                {
-                    Console.WriteLine("This is not a valid entry. Action cancelled.");
-                    return 0;
-                }
+                Console.WriteLine("This is not a valid entry. Action cancelled.");
+                return 0;
             }
+        }
+
+
+        static void Main(string[] args)
+        {
+            var dinosaurs = new List<Dinosaur>();
+
+            DisplayGreeting();
+
+            var userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
 
             if (userChoice == "A")
 
@@ -83,10 +91,12 @@ namespace JurassicPark
                 dinosaur.DietType = PromptForString("Diet Type - (O)mnivore/(C)arnivore: ");
                 dinosaur.EnclosureNumber = PromptForInteger("Enclosure Number: ");
                 dinosaur.WhenAcquired = PromptForInteger("Date Acquired (FORMAT: MMDDYYYY): ");
-                //**convert integer to date**
+                //int DateTime = dinosaur.WhenAcquired;
+                //DateTime dt = DateTime.Parse(Convert.ToString("MMDDYYYY"));
+
                 dinosaur.Weight = PromptForInteger("Weight: ");
 
-                //Dinosaur.Add(dinosaur); (**doesn't like add**)
+                dinosaurs.Add(dinosaur); //(**doesn't like add**)
 
                 Console.WriteLine("Would you like to add another dinosaur to the collection?");
 
