@@ -78,6 +78,11 @@ Add a method Description to your class to print out a description of the dinosau
 
 Prompt user to enter their selection. Convert to Upper
 
+If the user selects (Q)uit
+
+- Console.WriteLine "Have a roarin' great day at Jurrasic Zoo!"
+- Terminate and close application
+
 If user selects (A)dd
 
 Create a class: Dinosaur
@@ -105,6 +110,11 @@ If user selects (C)ollection
 - **TBD**Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.
 
 If user selects (R)emove
+Identify dinosaur by name
+If no match, null
+If match, present confirmation prompt to user.
+If No, cancel
+If Yes, remove the record
 
 If the user selects (S)ummary
 
@@ -128,8 +138,3 @@ If the user selects (V)iew
   -Use LINQ OrderBy and ThenBy function to arrange dinosaurs based on {Date.Time} stamp when dinosaur was created
   -If there are no dinosaurs in the collection, Console.WriteLine "There are no dinosaurs in our collection."
 - Return to menu
-
-If the user selects (Q)uit
-
-- Console.WriteLine "Have a roarin' great day at Jurrasic Zoo!"
-- Terminate and close application
