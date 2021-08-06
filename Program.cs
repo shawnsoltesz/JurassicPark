@@ -91,6 +91,8 @@ namespace JurassicPark
                 {
                     // They said quit, so set our keepGoing to false
                     keepGoing = false;
+                    Console.WriteLine("Have a roarin' great day at Jurrasic Zoo!\n\n\n\n");
+                    break;
                 }
 
                 else
@@ -116,36 +118,91 @@ namespace JurassicPark
                 if (userChoice == "C")
 
                 {
-                    //**TBD**Add a method Description to your class to print out a description of the dinosaur to include all the properties. Create an output format of your choosing. Feel free to be creative.
-                }
+                    foreach (var dinosaur in dinosaurs)
 
-                if (userChoice == "R")
-
-                {
-                    var nameToSearchFor = PromptForString("REMOVE: Dinosaur Name ");
-
-                    Dinosaur foundDinosaur = dinosaurs.FirstOrDefault(dinosaur => dinosaur.DinoName == nameToSearchFor);
-
-                    if (foundDinosaur == null)
                     {
-                        Console.WriteLine("No such dinosaur in our collection");
+                        Console.WriteLine("{dinosaur.DinoName}");
+                        Console.WriteLine("{dinosaur.DietType}");
+                        Console.WriteLine("{dinosaur.EnclosureNumber}");
+                        Console.WriteLine("{dinosaur.WhenAcquired}");
+                        Console.WriteLine("{dinosaur.Weight}");
                     }
 
-                    else
+                    if (dinosaurs == null)
+
                     {
-                        Console.WriteLine($"REMOVE: {foundDinosaur.DinoName} ");
+                        Console.WriteLine("There are no dinosaurs in our collection.");
 
-                        var confirm = PromptForString("Are you sure? [Y/N] ").ToUpper();
+                    }
+                    if (userChoice == "R")
 
-                        if (confirm == "Y")
+                    {
+                        var nameToSearchFor = PromptForString("REMOVE: Dinosaur Name ");
+
+                        Dinosaur foundDinosaur = dinosaurs.FirstOrDefault(dinosaur => dinosaur.DinoName == nameToSearchFor);
+
+                        if (foundDinosaur == null)
+
                         {
-                            dinosaurs.Remove(foundDinosaur);
+                            Console.WriteLine("No such dinosaur in our collection");
                         }
+
+                        else
+                        {
+                            Console.WriteLine($"REMOVE: {foundDinosaur.DinoName} ");
+
+                            var confirm = PromptForString("Are you sure? [Y/N] ").ToUpper();
+
+                            if (confirm == "Y")
+                            {
+                                dinosaurs.Remove(foundDinosaur);
+                            }
+                        }
+                        if (userChoice == "S")
+
+                        {
+                            foreach (var dinosaur in dinosaurs)
+                            {
+                                Console.WriteLine($"{dinosaur.DinoName} diet: {dinosaur.DietType}");
+                            }
+
+                            var numHerbivore = dinosaurs.Count(dinosaur => dinosaur.DietType == "Herbivore");
+                            var numCarnivore = dinosaurs.Count(dinosaur => dinosaur.DietType == "Carnivore");
+
+                            if (numCarnivore == 0 && numHerbivore == 0)
+
+                            {
+
+                                Console.WriteLine("There are no dinosaurs in our collection.");
+
+                            }
+
+                            else if (numCarnivore != 0 || numHerbivore != 0)
+                            {
+                                Console.WriteLine($"Carnivore: {numCarnivore}");
+                                Console.WriteLine($"Herbivore: {numHerbivore}");
+                            }
+                        }
+
+                        if (userChoice == "T")
+
+                            //-Prompt use with Console.Read line to collect dinosaur name to be removed.
+
+                            //- Include LINQ "Contains" expression to help return results.
+
+                            //- If no match, Console.WriteLine message "No such dinosaur exists in our collection." and return to menu
+                            //- If match, Console.WriteLine "Please enter {dinosaur} new enclosure pen"
+                            //- Console.Read to collect user input
+
+
+
+
+
+                            DisplayGreeting();
+
+                        userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
                     }
                 }
-                DisplayGreeting();
-
-                userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
             }
         }
     }

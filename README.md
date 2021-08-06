@@ -57,18 +57,12 @@ Create a welcome screen for application
 Create a menu for application with the following functionality options:
 
 1. [(A)dd a dinosaur to the collection]
-
 2. [(C)ollection review of all dinosaurs]
-
 3. [(R)emove a dinosaur from the collection]
-
 4. [(S)ummary of collections' Omnivores and Carnivores]
-
 5. [(T)ransfer a dinosaur's enclosure pen]
-
 6. [(V)iew dinosaurs in collection and date acquired]
-
-7. [(Q)uit] application and close
+7. [(Q)uit application and close]
 
 Weight entry could contain a decimal, so be sure variable type is double. Convert entry to two decimal places - 178.43, 203.00, 457.02, etc
 
