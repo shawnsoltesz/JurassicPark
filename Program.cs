@@ -177,9 +177,6 @@ namespace JurassicPark
                     }
                 }
                 else if (userChoice == "T")
-                {
-
-                }
 
                 {
                     var nameToSearchFor = PromptForString("TRANSFER: Dinosaur Name ");
@@ -205,20 +202,20 @@ namespace JurassicPark
                             //dinosaur.EnclosureNumber = PromptForInteger("TRANSFER: Enter new Enclosure Number: ");
                         }
 
-                        var nameToSearchFor = PromptForString("What name are you looking for? ");
+                        //var nameToSearchFor = PromptForString("What name are you looking for? ");
 
 
-          else
+                        else
                         {
-                            Console.WriteLine($"{foundDinosaur.DinoName} is in {foundEmployee.Department} and makes ${foundEmployee.Salary}");
-                            var changeChoice = PromptForString("What do you want to change [Name/Department/Salary]? ").ToUpper();
+                            //Console.WriteLine($"{foundDinosaur.DinoName} is in {foundEmployee.Department} and makes ${foundEmployee.Salary}");
+                            //var changeChoice = PromptForString("What do you want to change [Name/Department/Salary]? ").ToUpper();
 
                             // -- What do we want to change?
                             //    - if name
-                            if (changeChoice == "NAME")
+                            //if (changeChoice == "NAME")
                             {
                                 //      - prompt for a new name
-                                foundEmployee.Name = PromptForString("What is the new name? ");
+                                //foundEmployee.Name = PromptForString("What is the new name? ");
                             }
 
                         }
@@ -241,7 +238,10 @@ namespace JurassicPark
                     userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
 
                 }
+                else if (userChoice == "V")
+                { }
 
             }
         }
     }
+}
