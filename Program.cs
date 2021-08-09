@@ -108,6 +108,7 @@ namespace JurassicPark
                     dinosaur.Weight = PromptForInteger("ADD: Weight: ");
 
                     dinosaurs.Add(dinosaur);
+                    break;
 
                 }
                 else if (userChoice == "C")
@@ -130,6 +131,8 @@ namespace JurassicPark
                         Console.WriteLine("There are no dinosaurs in our collection.");
 
                     }
+
+                    break;
                 }
                 else if (userChoice == "R")
 
@@ -155,6 +158,8 @@ namespace JurassicPark
                             dinosaurs.Remove(foundDinosaur);
                         }
                     }
+
+                    break;
                 }
                 else if (userChoice == "S")
 
@@ -175,6 +180,8 @@ namespace JurassicPark
                         Console.WriteLine($"Carnivore: {numCarnivore}");
                         Console.WriteLine($"Herbivore: {numOmnivore}");
                     }
+
+                    break;
                 }
                 else if (userChoice == "T")
 
@@ -219,6 +226,8 @@ namespace JurassicPark
                             }
 
                         }
+
+                        break;
                     }
 
                     //-Prompt use with Console.Read line to collect dinosaur name to be removed.
