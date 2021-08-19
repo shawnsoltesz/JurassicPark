@@ -199,7 +199,6 @@ namespace JurassicPark
 
                         if (confirm == "Y")
                         {
-
                             foundDinosaur.EnclosureNumber = PromptForInteger("TRANSFER: Enter new Enclosure Number: ");
                         }
 
@@ -209,16 +208,11 @@ namespace JurassicPark
                 }
                 else if (userChoice == "V")
                 {
-                    //DinoName
-                    //WhenAcquired
-
-                    //Employee foundEmployee = Employees.FirstOrDefault(employee => employee.Name.ToUpper().Contains(nameToFind.ToUpper()));
                     foreach (var dinosaur in dinosaurs)
                     {
-                        var viewDinoName = dinosaurs.First(dinosaur => dinosaur.DinoName == dinosaurs.DinoName);
-                        var viewWhenAcquired = dinosaurs.Count(dinosaur => dinosaur.WhenAcquired == dinosaurs.WhenAcquired);
-                        //Console.WriteLine($"VIEW: {foundDinosaur.DinoName} ");
-
+                        var viewDinoName = dinosaurs.First(dinosaur => dinosaur.DinoName == dinosaur.DinoName);
+                        var viewWhenAcquired = dinosaurs.Count(dinosaur => dinosaur.WhenAcquired == dinosaur.WhenAcquired);
+                        Console.WriteLine($"VIEW: Dino Name: {dinosaur.DinoName} and When Acquired: {dinosaur.WhenAcquired} ");
                     }
 
                     if (dinosaurs == null)
