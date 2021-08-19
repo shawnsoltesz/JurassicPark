@@ -206,16 +206,29 @@ namespace JurassicPark
                         Console.WriteLine($"{foundDinosaur.DinoName} has been transferred to {foundDinosaur.EnclosureNumber}");
 
                     }
-
                 }
                 else if (userChoice == "V")
                 {
-                    Console.WriteLine($"VIEW: {foundDinosaur.DinoName} ");
+                    //DinoName
+                    //WhenAcquired
 
+                    //Employee foundEmployee = Employees.FirstOrDefault(employee => employee.Name.ToUpper().Contains(nameToFind.ToUpper()));
+                    foreach (var dinosaur in dinosaurs)
+                    {
+                        var viewDinoName = dinosaurs.First(dinosaur => dinosaur.DinoName == dinosaurs.DinoName);
+                        var viewWhenAcquired = dinosaurs.Count(dinosaur => dinosaur.WhenAcquired == dinosaurs.WhenAcquired);
+                        //Console.WriteLine($"VIEW: {foundDinosaur.DinoName} ");
+
+                    }
+
+                    if (dinosaurs == null)
+
+                    {
+                        Console.WriteLine("There are no dinosaurs in our collection.");
+
+                    }
                 }
-
             }
         }
     }
-}
 }
