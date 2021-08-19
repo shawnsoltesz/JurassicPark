@@ -10,7 +10,7 @@ namespace JurassicPark
         public string DinoName { get; set; }
         public string DietType { get; set; }
         public int EnclosureNumber { get; set; }
-        public int WhenAcquired { get; set; }
+        public DateTime WhenAcquired { get; set; }
         public int Weight { get; set; }
 
     }
@@ -44,8 +44,6 @@ namespace JurassicPark
 
             Console.WriteLine("Please input the letter from the menu and press ENTER.\n");
 
-
-
         }
 
         static string PromptForString(string prompt)
@@ -73,17 +71,21 @@ namespace JurassicPark
             }
         }
 
-
         static void Main(string[] args)
         {
             var dinosaurs = new List<Dinosaur>();
 
-            DisplayGreeting();
+            DateTime WhenAcquired = DateTime.Now;
+
+
 
             var keepGoing = true;
 
             while (keepGoing)
             {
+
+
+                DisplayGreeting();
 
                 var userChoice = Console.ReadLine().ToUpper();
 
@@ -95,20 +97,16 @@ namespace JurassicPark
                 }
                 else if (userChoice == "A")
                 {
-
                     var dinosaur = new Dinosaur();
+                    //DateTime dt = DateTime.Parse(Convert.ToString("MMDDYYYY"));
 
                     dinosaur.DinoName = PromptForString("ADD: Dinosaur Name: ");
                     dinosaur.DietType = PromptForString("ADD: Diet Type - (O)mnivore/(C)arnivore: ");
                     dinosaur.EnclosureNumber = PromptForInteger("ADD: Enclosure Number: ");
-                    dinosaur.WhenAcquired = PromptForInteger("Date Acquired (ADD: FORMAT: MMDDYYYY): ");
-                    //int DateTime = dinosaur.WhenAcquired;
-                    //DateTime dt = DateTime.Parse(Convert.ToString("MMDDYYYY"));
-
+                    Console.WriteLine($"Date Acquired {DateTime.Now}");
                     dinosaur.Weight = PromptForInteger("ADD: Weight: ");
 
                     dinosaurs.Add(dinosaur);
-                    break;
 
                 }
                 else if (userChoice == "C")
@@ -132,7 +130,6 @@ namespace JurassicPark
 
                     }
 
-                    break;
                 }
                 else if (userChoice == "R")
 
@@ -159,7 +156,6 @@ namespace JurassicPark
                         }
                     }
 
-                    break;
                 }
                 else if (userChoice == "S")
 
@@ -181,7 +177,6 @@ namespace JurassicPark
                         Console.WriteLine($"Herbivore: {numOmnivore}");
                     }
 
-                    break;
                 }
                 else if (userChoice == "T")
 
@@ -204,53 +199,23 @@ namespace JurassicPark
 
                         if (confirm == "Y")
                         {
-                            //var dinosaur = new Dinosaur();
 
-                            //dinosaur.EnclosureNumber = PromptForInteger("TRANSFER: Enter new Enclosure Number: ");
+                            foundDinosaur.EnclosureNumber = PromptForInteger("TRANSFER: Enter new Enclosure Number: ");
                         }
 
-                        //var nameToSearchFor = PromptForString("What name are you looking for? ");
+                        Console.WriteLine($"{foundDinosaur.DinoName} has been transferred to {foundDinosaur.EnclosureNumber}");
 
-
-                        else
-                        {
-                            //Console.WriteLine($"{foundDinosaur.DinoName} is in {foundEmployee.Department} and makes ${foundEmployee.Salary}");
-                            //var changeChoice = PromptForString("What do you want to change [Name/Department/Salary]? ").ToUpper();
-
-                            // -- What do we want to change?
-                            //    - if name
-                            //if (changeChoice == "NAME")
-                            {
-                                //      - prompt for a new name
-                                //foundEmployee.Name = PromptForString("What is the new name? ");
-                            }
-
-                        }
-
-                        break;
                     }
-
-                    //-Prompt use with Console.Read line to collect dinosaur name to be removed.
-
-                    //- Include LINQ "Contains" expression to help return results.
-
-                    //- If no match, Console.WriteLine message "No such dinosaur exists in our collection." and return to menu
-                    //- If match, Console.WriteLine "Please enter {dinosaur} new enclosure pen"
-                    //- Console.Read to collect user input
-
-
-
-
-
-                    DisplayGreeting();
-
-                    userChoice = Console.ReadLine().ToUpper(); //won't allow to be packaged with the DisplayGreeting method
 
                 }
                 else if (userChoice == "V")
-                { }
+                {
+                    Console.WriteLine($"VIEW: {foundDinosaur.DinoName} ");
+
+                }
 
             }
         }
     }
+}
 }
